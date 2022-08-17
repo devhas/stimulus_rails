@@ -2,7 +2,7 @@
 
 ## Prerequisite
 
-- Ruby version 3+
+- Ruby version 3.0.2
 - Rails version 7+
 
 ## Technologies used in the project
@@ -16,6 +16,7 @@
 Currently the project has 2 models named "employee" and "employment"
 Basically an employee has many employment records. It can save the employer information along with their employment tenures. 
 ​
+
 Clone the repository by the folling link
 ​
 ```

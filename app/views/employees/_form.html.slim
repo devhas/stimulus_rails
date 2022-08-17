@@ -1,10 +1,10 @@
 = form_with(model: employee, class: "contents") do |form|
-  div[data-action="turbo:submit-end->modal#submitEnd"]
+  div[data-action="turbo:submit-end->modal#submitEnd" data-controller="validate"]
     h3.mb-4.text-xl.font-medium.text-gray-900.dark:text-white
       | Personal Information
     .my-5
       = form.label :first_name
-      = form.text_field :first_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", :required => true
+      = form.text_field :first_name, :maxlength => 25, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", :required => true
       - if employee.errors[:first_name].any?
         ul
           - employee.errors[:first_name].each do |message|
@@ -13,7 +13,7 @@
               = message
     .my-5
       = form.label :last_name
-      = form.text_field :last_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", :required => true
+      = form.text_field :last_name, :maxlength => 50, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", :required => true
       - if employee.errors[:last_name].any?
         ul
           - employee.errors[:last_name].each do |message|
@@ -25,7 +25,11 @@
       = form.text_field :nickname, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
     .my-5.mr-2
       = form.label :email
-      = form.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", :required => true
+      = form.email_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", "data-action": "change->validate#email", :required => true
+      ul
+        li.text-red-500
+          span.error.hidden[data-validate-target="results"]
+            | Email is invalid.
       - if employee.errors[:email].any?
         ul
           - employee.errors[:email].each do |message|
@@ -34,7 +38,7 @@
               = message
     .my-5
       = form.label :phone_number
-      = form.text_field :phone_number, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", :required => true
+      = form.text_field :phone_number, :maxlength => 12, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full",  "data-action": "input->validate#phoneNumber", :required => true
       - if employee.errors[:phone_number].any?
         ul
           - employee.errors[:phone_number].each do |message|
