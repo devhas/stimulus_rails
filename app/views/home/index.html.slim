@@ -2,6 +2,24 @@
   - if notice.present?
     p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block
       = notice
-.flex.justify-center.text-4xl
-  h1
-    | Employee Management System
+table.w-full.text-sm.text-left.text-gray-500.dark:text-gray-400
+  thead.border-b.text-xs.text-gray-700.uppercase.bg-gray-50.dark:bg-gray-700.dark:text-gray-400
+    tr
+      th.py-3.px-6[scope="col"]
+        |  First Name 
+      th.py-3.px-6[scope="col"]
+        |  Last Name 
+      th.py-3.px-6[scope="col"]
+        |  Email 
+      th.py-3.px-6[scope="col"]
+        |  Phone Number 
+      th.py-3.px-6[scope="col"]
+        |  Employer
+      th.py-3.px-6[scope="col"]
+        |  Start date
+      th.py-3.px-6[scope="col"]
+        |  Employment end date
+      th.py-3.px-6[scope="col"]
+        |  Action 
+  tbody
+    = render @employees

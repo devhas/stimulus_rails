@@ -14,7 +14,15 @@
             <%= employee.phone_number %>
         </td>
         <td class="py-4 px-6">
-          <%= link_to "Show", employee, class: "bg-blue-600 text-white rounded-lg py-3 px-5 inline-block font-medium" %>
+            <%= employee.employments&.last&.employer %>
+        </td>
+        <td class="py-4 px-6">
+            <%= employee.employments&.last&.date_started.strftime("%B %d, %Y") %>
+        </td>
+        <td class="py-4 px-6">
+            <%= employee.employments&.last&.date_employment_ended.strftime("%B %d, %Y") %>
+        </td>
+        <td class="py-4 px-6">
           <%= link_to 'Edit', edit_employee_path(employee), "data-controller": "turbo", class: "bg-gray-600 rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
         </td>
     </tr>
@@ -26,8 +34,8 @@
     <h2>Nickname: <%= employee.nickname %></h2>
     <h2>Phone Number: <%= employee.phone_number %></h2>
     <h2><b>Employment details:</b></h2>
-    <h3>Employer: <%= employee.employments.last.employer %></h3>
-    <h3>Start date: <%= employee.employments.last.date_started %></h3>
-    <h3>End date: <%= employee.employments.last.date_employment_ended %></h3>
+    <h3>Employer: <%= employee.employments&.last&.employer %></h3>
+    <h3>Start date: <%= employee.employments&.last&.date_started %></h3>
+    <h3>End date: <%= employee.employments&.last&.date_employment_ended %></h3>
   </div>
 <% end %>
