@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employer: MyString
+  date_started: 2022-08-17 15:01:38
+  date_employment_ended: 2022-08-17 15:01:38
+  employee: one
+
+two:
+  employer: MyString
+  date_started: 2022-08-17 15:01:38
+  date_employment_ended: 2022-08-17 15:01:38
+  employee: two

@@ -1,0 +1,19 @@
+| <div id="
+= dom_id employment
+| "> 
+p.my-5
+  strong.block.font-medium.mb-1
+    | Employer:
+  = employment.employer
+p.my-5
+  strong.block.font-medium.mb-1
+    | Date started:
+  = employment.date_started
+p.my-5
+  strong.block.font-medium.mb-1
+    | Date employment ended:
+  = employment.date_employment_ended
+- if action_name != "show"
+  = link_to "Show this employment", employment, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
+  = link_to 'Edit this employment', edit_employment_path(employment), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"
+  hr.mt-6
