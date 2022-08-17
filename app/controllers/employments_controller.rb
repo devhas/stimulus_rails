@@ -1,19 +1,19 @@
+# frozen_string_literal: true
+
 class EmploymentsController < ApplicationController
-  before_action :set_employment, only: %i[ show edit update destroy ]
+  before_action :set_employment, only: %i[show edit update destroy]
 
   def index
     @employments = Employment.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @employment = Employment.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @employment = Employment.new(employment_params)
@@ -22,9 +22,9 @@ class EmploymentsController < ApplicationController
       @employment.save
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
-          "employee_form",
-          partial: "employments/form",
-          locals: {employment: @employment}
+          'employee_form',
+          partial: 'employments/form',
+          locals: { employment: @employment }
         )
       end
     end
@@ -35,9 +35,9 @@ class EmploymentsController < ApplicationController
       @employment.update(employment_params)
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
-          "employee_form",
-          partial: "employments/form",
-          locals: {employment: @employment}
+          'employee_form',
+          partial: 'employments/form',
+          locals: { employment: @employment }
         )
       end
     end
@@ -47,17 +47,18 @@ class EmploymentsController < ApplicationController
     @employment.destroy
 
     respond_to do |format|
-      format.html { redirect_to employments_url, notice: "Employment was successfully destroyed." }
+      format.html { redirect_to employments_url, notice: 'Employment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    def set_employment
-      @employment = Employment.find(params[:id])
-    end
 
-    def employment_params
-      params.require(:employment).permit(:employer, :date_started, :date_employment_ended, :employee_id)
-    end
+  def set_employment
+    @employment = Employment.find(params[:id])
+  end
+
+  def employment_params
+    params.require(:employment).permit(:employer, :date_started, :date_employment_ended, :employee_id)
+  end
 end
