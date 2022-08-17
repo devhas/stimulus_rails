@@ -5,3 +5,10 @@ nav {
 nav a:hover {
 	color: #eee;
 }
+.back-drop {
+	background: #423f3f80;
+}
+.btn-holder {
+  display: flex;
+	justify-content: flex-end;
+}
