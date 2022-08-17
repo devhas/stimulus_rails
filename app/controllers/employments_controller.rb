@@ -18,14 +18,14 @@ class EmploymentsController < ApplicationController
 
   def create
     @employment = Employment.new(employment_params)
-
+    employees = Employee.all
     respond_to do |format|
       @employment.save
       format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(
-          'employee_form',
-          partial: 'employments/form',
-          locals: { employment: @employment }
+        render turbo_stream: turbo_stream.update(
+          'index_home',
+          partial: "home/records", 
+          :locals => {:@employees => employees}
         )
       end
     end

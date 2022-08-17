@@ -21,7 +21,7 @@ class EmployeesController < ApplicationController
       end
 
       format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(
+        render turbo_stream: turbo_stream.update(
           "employee_form",
           partial: partial,
           locals: { employee: @employee, employment: @employee&.employments&.build() }
