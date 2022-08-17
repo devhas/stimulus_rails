@@ -1,4 +1,5 @@
 <%= turbo_frame_tag "employee_form", target: :_top do %>
+  <div data-action="turbo:submit-end->modal#submitEnd" />
   <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Employer Information</h3>
 
   <%= form_with(model: employment, class: "contents") do |form| %>
@@ -16,17 +17,17 @@
 
     <div class="my-5">
       <%= form.label :employer %>
-      <%= form.text_field :employer, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.text_field :employer, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", :required => true %>
     </div>
 
     <div class="my-5">
       <%= form.label :date_started %>
-      <%= form.datetime_field :date_started, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.datetime_field :date_started, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", :required => true %>
     </div>
 
     <div class="my-5">
       <%= form.label :date_employment_ended %>
-      <%= form.datetime_field :date_employment_ended, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.datetime_field :date_employment_ended, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", :required => true %>
     </div>
 
 
@@ -35,7 +36,7 @@
     </div>
 
     <div class="inline">
-      <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+      <%= form.submit "Save", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
     </div>
   <% end %>
 <% end %>

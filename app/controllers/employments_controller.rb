@@ -19,52 +19,26 @@ class EmploymentsController < ApplicationController
     @employment = Employment.new(employment_params)
 
     respond_to do |format|
-      if @employment.save
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.replace(
-            "employee_form",
-            partial: "employments/form",
-            locals: {employment: @employment}
-          )
-        end
-        format.html { redirect_to employment_url(@employment), notice: "Employment was successfully created." }
-        format.json { render :show, status: :created, location: @employment }
-      else
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.replace(
-            "employee_form",
-            partial: "employments/form",
-            locals: {employment: @employment}
-          )
-        end
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @employment.errors, status: :unprocessable_entity }
+      @employment.save
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "employee_form",
+          partial: "employments/form",
+          locals: {employment: @employment}
+        )
       end
     end
   end
 
   def update
     respond_to do |format|
-      if @employment.update(employment_params)
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.replace(
-            "employee_form",
-            partial: "employments/form",
-            locals: {employment: @employment}
-          )
-        end
-        format.html { redirect_to employment_url(@employment), notice: "Employment was successfully updated." }
-        format.json { render :show, status: :ok, location: @employment }
-      else
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.replace(
-            "employee_form",
-            partial: "employments/form",
-            locals: {employment: @employment}
-          )
-        end
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @employment.errors, status: :unprocessable_entity }
+      @employment.update(employment_params)
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "employee_form",
+          partial: "employments/form",
+          locals: {employment: @employment}
+        )
       end
     end
   end
@@ -79,12 +53,10 @@ class EmploymentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_employment
       @employment = Employment.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def employment_params
       params.require(:employment).permit(:employer, :date_started, :date_employment_ended, :employee_id)
     end
