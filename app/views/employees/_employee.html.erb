@@ -1,0 +1,64 @@
+<div id="<%= dom_id employee %>">
+  <%
+=begin%>
+ <p class="my-5">
+    <strong class="block font-medium mb-1">First name:</strong>
+    <%= employee.first_name %>
+  </p> 
+<%
+=end%>
+
+  <%
+=begin%>
+ <p class="my-5">
+    <strong class="block font-medium mb-1">Last name:</strong>
+    <%= employee.last_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Nickname:</strong>
+    <%= employee.nickname %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email:</strong>
+    <%= employee.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Phone number:</strong>
+    <%= employee.phone_number %>
+  </p> 
+<%
+=end%>
+
+
+<div class="overflow-x-auto relative">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        
+        <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <%= employee.first_name %>
+                </th>
+                <td class="py-4 px-6">
+                    <%= employee.last_name %>
+                </td>
+                <td class="py-4 px-6">
+                    Laptop
+                </td>
+                <td class="py-4 px-6">
+                    <%= employee.phone_number %>
+                </td>
+                <td class="py-4 px-6">
+                  <% if action_name != "show" %>
+                    <%= link_to "Show this employee", employee, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+                    <%= link_to 'Edit this employee', edit_employee_path(employee), "data-controller": "turbo", class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+                  <% end %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</div>
