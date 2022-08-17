@@ -1,24 +1,50 @@
-# README
+# Rails Stimulus Project Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Prerequisite
 
-Things you may want to cover:
+- Ruby version 3+
+- Rails version 7+
 
-* Ruby version
+Clone the repository by the folling link
 
-* System dependencies
+```
+  https://github.com/devhas/stimulus_rails
+```
 
-* Configuration
 
-* Database creation
+Navigate to the project folder
 
-* Database initialization
+```
+ cd stimulus_rails
+```
 
-* How to run the test suite
+Execute the following command to install required gems
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+  bunlde install
+```
 
-* Deployment instructions
+Migrate the database by using the following command
 
-* ...
+```
+  rails db:migrate
+```
+
+Run the server using the following command
+
+```
+  rails s
+```
+
+Open the application with the following URL in the browser
+
+```
+  localhost:3000
+```
+
+
+
+
+
+
+
