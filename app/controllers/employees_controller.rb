@@ -37,7 +37,7 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       @employee.update(employee_params)
       format.turbo_stream do
-        render turbo_stream: turbo_stream.update(
+        render turbo_stream: turbo_stream.remove(
           "employee_form", 
           partial: "form",
           locals: {employee: @employee}
