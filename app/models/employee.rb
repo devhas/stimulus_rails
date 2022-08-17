@@ -5,5 +5,4 @@ class Employee < ApplicationRecord
 	validates :phone_number, presence: true
 	validates :email, presence: true, uniqueness: { case_sensitive: true }
 	validates_format_of :phone_number, with: /\d{3}-\d{3}-\d{4}/, message: "must be in the following format: xxx-xxx-xxxx"
- 
 end

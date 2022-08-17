@@ -17,10 +17,15 @@ class EmploymentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create employment" do
     assert_difference("Employment.count") do
-      post employments_url, params: { employment: { date_employment_ended: @employment.date_employment_ended, date_started: @employment.date_started, employee_id: @employment.employee_id, employer: @employment.employer } }
+      post employments_url, params: { employment: { date_employment_ended: @employment.date_employment_ended, date_started: @employment.date_started, employee_id: @employment.employee_id, employer: @employment.employer }, format: :turbo_stream }
     end
 
-    assert_redirected_to employment_url(Employment.last)
+    assert_response :success
+  end
+
+  test "should not save employment without employer" do
+    employment = Employment.new
+    assert_not employment.save, "Saved the employment without a employer"
   end
 
   test "should show employment" do
@@ -34,8 +39,8 @@ class EmploymentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update employment" do
-    patch employment_url(@employment), params: { employment: { date_employment_ended: @employment.date_employment_ended, date_started: @employment.date_started, employee_id: @employment.employee_id, employer: @employment.employer } }
-    assert_redirected_to employment_url(@employment)
+    patch employment_url(@employment), params: { employment: { date_employment_ended: @employment.date_employment_ended, date_started: @employment.date_started, employee_id: @employment.employee_id, employer: @employment.employer }, format: :turbo_stream }
+    assert_response :success
   end
 
   test "should destroy employment" do
