@@ -17,10 +17,10 @@
             <%= employee.employments&.last&.employer %>
         </td>
         <td class="py-4 px-6">
-            <%= employee.employments&.last&.date_started.strftime("%B %d, %Y") %>
+            <%= employee.employments&.last&.date_started&.strftime("%B %d, %Y") %>
         </td>
         <td class="py-4 px-6">
-            <%= employee.employments&.last&.date_employment_ended.strftime("%B %d, %Y") %>
+            <%= employee.employments&.last&.date_employment_ended&.strftime("%B %d, %Y") %>
         </td>
         <td class="py-4 px-6">
           <%= link_to 'Edit', edit_employee_path(employee), "data-controller": "turbo", class: "bg-gray-600 rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
