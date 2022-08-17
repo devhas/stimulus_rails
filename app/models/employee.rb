@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Employee < ApplicationRecord
-  has_many :employments
+  has_many :employments, dependent: :destroy
   validates :first_name, presence: true, length: { minimum: 1, maximum: 25 }
   validates :last_name, presence: true, length: { minimum: 1, maximum: 50 }
   validates :phone_number, presence: true

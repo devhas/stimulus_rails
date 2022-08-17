@@ -1,0 +1,27 @@
+= turbo_frame_tag "employee_form", target: :_top do
+  div[data-action="turbo:submit-end->modal#submitEnd"]
+    h3.mb-4.text-xl.font-medium.text-gray-900.dark:text-white
+      | Employer Information
+    = form_with(model: employment, class: "contents") do |form|
+      - if employment.errors.any?
+        #error_explanation.bg-red-50.text-red-500.px-3.py-2.font-medium.rounded-lg.mt-3
+          h2
+            = pluralize(employment.errors.count, "error")
+            |  prohibited this employment from being saved:
+          ul
+            - employment.errors.each do |error|
+              li
+                = error.full_message
+      .my-5
+        = form.label :employer
+        = form.text_field :employer, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", :required => true
+      .my-5
+        = form.label :date_started
+        = form.datetime_field :date_started, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", :required => true
+      .my-5
+        = form.label :date_employment_ended
+        = form.datetime_field :date_employment_ended, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", :required => true
+      .my-5
+        = form.hidden_field  :employee_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+      .inline
+        = form.submit "Save", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"

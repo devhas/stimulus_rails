@@ -1,0 +1,26 @@
+.w-full
+  - if notice.present?
+    p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block
+      = notice
+  .flex.justify-between.items-center
+    h1.font-bold.text-4xl
+      | Employees
+    = link_to "Back to Home Page", root_path, class: "mb-1 ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
+  = turbo_frame_tag "refresh_content", target: :_top do
+    #employees.container.mx-auto.px-5
+      .overflow-x-auto.relative
+        table.w-full.text-sm.text-left.text-gray-500.dark:text-gray-400
+          thead.border-b.text-xs.text-gray-700.uppercase.bg-gray-50.dark:bg-gray-700.dark:text-gray-400
+            tr
+              th.py-3.px-6[scope="col"]
+                |  First Name 
+              th.py-3.px-6[scope="col"]
+                |  Last Name 
+              th.py-3.px-6[scope="col"]
+                |  Email 
+              th.py-3.px-6[scope="col"]
+                |  Phone Number 
+              th.py-3.px-6[scope="col"]
+                |  Action 
+          tbody
+            = render @employees
