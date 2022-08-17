@@ -10,4 +10,11 @@ export default class extends Controller {
   close() {
     this.element.remove()
   }
+
+  submitEnd(event) {
+    console.log(event.detail.success)
+    if (event.detail.success) {
+      this.close()
+    }
+  }
 }
