@@ -9,7 +9,10 @@
 
   </div>
 
-  <div id="employees" class="min-w-full">
-    <%= render @employees %>
-  </div>
+  <%= turbo_frame_tag "refresh_content", target: :_top do %>
+    <div id="employees" class="min-w-full">
+      <%= render @employees %>
+    </div>
+  <% end %>
+  
 </div>

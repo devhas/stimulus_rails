@@ -2,20 +2,39 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
-
-  <div class="mt-5">
-    <%= link_to 'Personal Data', new_employee_path, "data-controller": "turbo", class: "text-xl text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
-  </div>
-  <div class="mt-5">
-    <%= link_to 'Employement', employees_path, class: "text-xl text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
-  </div>
 </div>
-
-<hr class="mt-28">
 
 
 <div id="employees" class="container mx-auto px-5">
-  <%= render @employees %>
+
+<div class="overflow-x-auto relative">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="border-b text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="py-3 px-6">
+                    First Name
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Last Name
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Email
+                </th>
+                <th scope="col" class="py-3 px-6">
+                    Phone Number
+                </th>
+                 <th scope="col" class="py-3 px-6">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= render @employees %>
+        </tbody>
+    </table>
+</div>
+
+  
 </div>
 
 
