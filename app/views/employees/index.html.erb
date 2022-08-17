@@ -5,14 +5,38 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Employees</h1>
-    <%= link_to "Back to Home Page", root_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Back to Home Page", root_path, class: "mb-1 ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 
   </div>
 
   <%= turbo_frame_tag "refresh_content", target: :_top do %>
-    <div id="employees" class="min-w-full">
-      <%= render @employees %>
+    <div id="employees" class="container mx-auto px-5">
+      <div class="overflow-x-auto relative">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="border-b text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" class="py-3 px-6">
+                  First Name
+              </th>
+              <th scope="col" class="py-3 px-6">
+                  Last Name
+              </th>
+              <th scope="col" class="py-3 px-6">
+                  Email
+              </th>
+              <th scope="col" class="py-3 px-6">
+                  Phone Number
+              </th>
+               <th scope="col" class="py-3 px-6">
+                  Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @employees %>
+          </tbody>
+        </table>
+      </div>
     </div>
   <% end %>
-  
 </div>
