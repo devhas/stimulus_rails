@@ -18,7 +18,6 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
     partial = 'form'
-
     respond_to do |format|
       if @employee.save
         partial = "employments/form"
